@@ -3,10 +3,6 @@ function [] = run_spm_parallel(matlabbatch, n_cores)
 %
 %Start pool if there is none, split matlabbatch and run parallel
 
-    if ~exist('n_cores', 'var')
-        n_cores = determine_number_of_procs;
-    end
-    
     start_pool_conditionally(n_cores);
     loop_procs = splitvect(matlabbatch, n_cores);
     
