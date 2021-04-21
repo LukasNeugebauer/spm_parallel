@@ -8,13 +8,13 @@ function [] = run_spm_parallel(matlabbatch, n_cores)
 
     spm_path = fileparts(which('spm'));
     if isempty(spm_path)
-	fprintf('Couldn''t find spm path. If it throws an error, you''ll probably have to add that yourself WITHIN the parfor loop.');
+        fprintf('Couldn''t find spm path. If it throws an error, you''ll probably have to add that yourself WITHIN the parfor loop.');
     end
     
     parfor worker=1:n_cores
         
         warning('off', 'all');
-	addpath(genpath(spm_path));
+        addpath(genpath(spm_path));
         warning('on', 'all');
         
         spm_jobman('run', loop_procs{worker});
